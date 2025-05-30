@@ -9,6 +9,7 @@ import { formatPokemonNumber } from "./utils/formatPokemonNumber";
 
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from "@headlessui/react";
 import PokemonNavigator from "./components/PokemonNavigator";
+import StrengthsAndWeaknesses from "./components/StrengthsAndWeaknesses";
 
 const PokemonDetails = () => {
   const params = useParams();
@@ -19,6 +20,8 @@ const PokemonDetails = () => {
     isError,
     isSuccess
   } = usePokemonDetailsQuery(params.id ?? "");
+
+  console.log(pokemonDetails);
 
   const { colors } = useExtractColors(pokemonDetails?.image);
 
@@ -77,32 +80,9 @@ const PokemonDetails = () => {
         {
           id: 1,
           title: (
-            <div className="">
-              <div className="mb-4">
-                <h3 className="font-bold text-xl text-gray-8 mb-2 ">
-                  Description
-                </h3>
-                <p className="text-gray-8">{pokemonDetails?.description}</p>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-1/2">
-                  <h3 className="font-bold text-xl text-gray-8 mb-2 ">
-                    Height
-                  </h3>
-                  <p className="text-gray-8">
-                    {pokemonDetails?.characteristics.height}
-                  </p>
-                </div>
-                <div className="w-1/2">
-                  <h3 className="font-bold text-xl text-gray-8 mb-2 ">
-                    Weight
-                  </h3>
-                  <p className="text-gray-8">
-                    {pokemonDetails?.characteristics.weight}
-                  </p>
-                </div>
-              </div>
-            </div>
+            <StrengthsAndWeaknesses
+              currentPokemonTypes={pokemonDetails?.types ?? []}
+            />
           )
         }
       ]
@@ -238,22 +218,11 @@ const PokemonDetails = () => {
                       {posts.map((post) => (
                         <li
                           key={post.id}
-                          className="relative rounded-md pb-3 text-sm/6 transition hover:bg-white/5"
+                          className="relative rounded-md pb-3 text-sm/6 transition"
                         >
-                          <a href="#" className="font-semibold text-gray-9">
-                            <span className="absolute inset-0" />
+                          <div className="font-semibold text-gray-9">
                             {post.title}
-                          </a>
-                          {/* <ul
-                            className="flex gap-2 text-white/50"
-                            aria-hidden="true"
-                          >
-                            <li>{post.date}</li>
-                            <li aria-hidden="true">&middot;</li>
-                            <li>{post.commentCount} comments</li>
-                            <li aria-hidden="true">&middot;</li>
-                            <li>{post.shareCount} shares</li>
-                          </ul> */}
+                          </div>
                         </li>
                       ))}
                     </ul>
@@ -273,7 +242,6 @@ const PokemonDetails = () => {
           </div>
 
           {params.id && <PokemonNavigator pokemonId={+params.id} />}
-          {/* </div>  */}
         </div>
 
         {/* Column 2 */}

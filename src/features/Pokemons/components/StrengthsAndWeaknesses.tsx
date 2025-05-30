@@ -56,7 +56,7 @@ const StrengthsAndWeaknesses: React.FC<StrengthsAndWeaknessesProps> = ({
 
             <div
               className={`flex items-center gap-2 mb-2 ${
-                index === 0 ? "mb-8" : ""
+                index === 0 ? "mb-0" : ""
               }`}
               key={key}
             >
@@ -70,6 +70,10 @@ const StrengthsAndWeaknesses: React.FC<StrengthsAndWeaknessesProps> = ({
                 />
               ))}
             </div>
+
+            {index < currentPokemonTypes.length - 1 && (
+              <hr className="my-4 border-gray-300" /> // Separator between different types
+            )}
           </>
         );
       });
@@ -78,8 +82,10 @@ const StrengthsAndWeaknesses: React.FC<StrengthsAndWeaknessesProps> = ({
 
   return (
     <>
-      <div className=" text-gray-5 p-4 rounded-md hover:shadow-lg transition duration-300 bg-opacity-80 w-1/3">
-        <h2 className="font-semibold text-lg mb-5">Strengths & Weaknesses</h2>
+      <div className=" text-gray-5 rounded-md transition duration-300 bg-opacity-80">
+        <h2 className="font-bold text-xl text-gray-8 mb-4">
+          Strengths & Weaknesses
+        </h2>
         {StrengthsAndWeaknessesImageMap}
       </div>
     </>
