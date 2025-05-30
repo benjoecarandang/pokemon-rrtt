@@ -23,7 +23,7 @@ const StatBar: React.FC<{ name: string; value: string; color: string }> = ({
   color
 }) => (
   <div className="flex items-center mb-2">
-    <div className={`min-w-20 uppercase font-medium text-gray-8`}>{name}</div>
+    <div className={`min-w-20 uppercase`}>{name}</div>
     <div className="w-full bg-gray-200 h-2 rounded-lg overflow-hidden">
       <div
         className={`h-full rounded-lg ${color}`}
@@ -45,20 +45,23 @@ const Stats: React.FC<StatsProps> = ({ stats }) => {
   };
 
   // Filter out unwanted stats and map to a modified format
-  const modifiedStats = stats
-    .map(({ base_stat, stat: { name } }) => {
-      const mappedStat = STAT_MAPPINGS[name.toLowerCase()];
-      return {
-        base_stat,
-        stat: {
-          name: mappedStat?.displayName || name
-        },
-        color: mappedStat?.color || "bg-gray-500"
-      };
-    });
+  const modifiedStats = stats.map(({ base_stat, stat: { name } }) => {
+    const mappedStat = STAT_MAPPINGS[name.toLowerCase()];
+    return {
+      base_stat,
+      stat: {
+        name: mappedStat?.displayName || name
+      },
+      color: mappedStat?.color || "bg-gray-500"
+    };
+  });
 
   return (
-    <div className="rounded-md hover:shadow-lg transition duration-300 bg-opacity-80">
+    <div className="rounded-md transition duration-300 bg-opacity-80 text-gray-5">
+      <h2 className="font-bold text-xl text-gray-8 mb-4">
+        Statistics
+      </h2>
+
       <div>
         {modifiedStats.map(({ stat: { name }, base_stat, color }) => (
           <StatBar key={name} name={name} value={base_stat} color={color!} />
