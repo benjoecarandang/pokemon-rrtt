@@ -41,3 +41,8 @@ jobs:
         npm run deploy -- -u "github-actions-bot <support+actions@github.com>"
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Verify build output
+      run: |
+        ls -la dist/
+        cat dist/index.html
