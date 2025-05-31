@@ -1,4 +1,3 @@
-import { POKEMON_IMAGE_URL } from "../../../utils/constants";
 import { CustomPokemonDataType, PokemonDataType } from "../../../utils/types";
 import { formatPokemonTypes } from "./formatPokemonTypes";
 

@@ -1,9 +1,9 @@
 import { QueryClient, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import { RouterProvider } from "react-router/dom";
 
-import { paths } from "../config/paths";
+// import { paths } from "../config/paths";
 import MainLayout from "../components/layouts/MainLayout";
 // import { ProtectedRoute } from "@/lib/auth";
 
@@ -30,16 +30,24 @@ export const createAppRouter = (queryClient: QueryClient) =>
       element: <MainLayout children={null} />,
       children: [
         {
+          index: true, // <-- this matches "/"
+          Component: () => <Navigate to="/pokemons" replace />
+        },
+        {
           path: "/pokemons",
           lazy: () =>
-            import("../features/Pokemons/PokemonList").then(convert(queryClient)),
+            import("../features/Pokemons/PokemonList").then(
+              convert(queryClient)
+            )
         },
         {
           children: [
             {
               path: "/pokemon/:id",
               lazy: () =>
-                import("../features/Pokemons/PokemonDetails").then(convert(queryClient)),
+                import("../features/Pokemons/PokemonDetails").then(
+                  convert(queryClient)
+                ),
               children: []
             }
           ]
@@ -49,7 +57,9 @@ export const createAppRouter = (queryClient: QueryClient) =>
             {
               path: "type/:type", // Add the dynamic type route here
               lazy: () =>
-                import("../features/Pokemons/PokemonList").then(convert(queryClient))
+                import("../features/Pokemons/PokemonList").then(
+                  convert(queryClient)
+                )
             }
           ]
         }

@@ -18,15 +18,15 @@ const PokemonNavigator: React.FC<PokemonNavigatorProps> = ({ pokemonId }) => {
   const maxPokemonId = 1025; // Last known Pokémon in PokéAPI
 
   // Fetch current Pokémon details
-  const {
-    data: currentPokemon,
-    isLoading,
-    isError
-  } = useQuery({
-    queryKey: ["pokemon", pokemonId],
-    queryFn: () => fetchPokemon(pokemonId),
-    staleTime: 1000 * 60 * 5 // Cache for 5 minutes
-  });
+  // const {
+  //   data: currentPokemon,
+  //   isLoading,
+  //   isError
+  // } = useQuery({
+  //   queryKey: ["pokemon", pokemonId],
+  //   queryFn: () => fetchPokemon(pokemonId),
+  //   staleTime: 1000 * 60 * 5 // Cache for 5 minutes
+  // });
 
   // Fetch previous Pokémon details (if not the first Pokémon)
   const { data: prevPokemon } = useQuery({
@@ -42,8 +42,8 @@ const PokemonNavigator: React.FC<PokemonNavigatorProps> = ({ pokemonId }) => {
     enabled: pokemonId < maxPokemonId // Fetch only if not at the end
   });
 
-  if (isLoading) return <p>Loading...</p>;
-  if (isError) return <p>Error loading Pokémon.</p>;
+  // if (isLoading) return <p>Loading...</p>;
+  // if (isError) return <p>Error loading Pokémon.</p>;
 
   return (
     <div className="flex justify-between items-center mt-4 gap-4 relative max-w-screen-xl mx-auto mt-10 ">
