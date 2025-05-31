@@ -45,4 +45,5 @@ jobs:
     - name: Verify build output
       run: |
         ls -la dist/
-        cat dist/index.html
+        grep -r "src/main.tsx" dist/ && echo "❌ Found raw source references!" && exit 1
+        echo "✅ Build looks correct"
