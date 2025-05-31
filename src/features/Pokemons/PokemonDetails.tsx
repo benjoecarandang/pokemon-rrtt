@@ -18,10 +18,7 @@ const PokemonDetails = () => {
     data: pokemonDetails,
     isLoading,
     isError,
-    isSuccess
   } = usePokemonDetailsQuery(params.id ?? "");
-
-  console.log(pokemonDetails);
 
   const { colors } = useExtractColors(pokemonDetails?.image);
 

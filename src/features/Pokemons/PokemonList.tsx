@@ -7,7 +7,7 @@ import { useParams, useSearchParams } from "react-router-dom";
 import LoadingSpinner from "./components/LoadingSpinner";
 
 export const PokemonList = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, ] = useSearchParams();
   const query = searchParams.get("query") || "";
   const { type } = useParams();
 

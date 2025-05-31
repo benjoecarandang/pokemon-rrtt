@@ -1,9 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import Footer from "./components/ui/Footer";
 import Navbar from "./components/ui/Navbar";
-import PokemonList from "./pages/PokemonList";
-import PokemonDetails from "./pages/PokemonDetails";
-import PokemonTCG from "./pages/PokemonTCG";
+import PokemonList from "./features/Pokemons/PokemonList";
+import PokemonDetails from "./features/Pokemons/PokemonDetails";
+import PokemonTCG from "./features/PokemonsTCG/PokemonTCG";
 import Backdrop from "./components/ui/Backdrop";
 
 const App = () => {
