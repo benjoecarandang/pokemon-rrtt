@@ -1,6 +1,6 @@
 import { QueryClient, useQueryClient } from "@tanstack/react-query";
 import { useMemo } from "react";
-import { createBrowserRouter, Navigate } from "react-router";
+import { createHashRouter, Navigate } from "react-router";
 import { RouterProvider } from "react-router/dom";
 
 // import { paths } from "../config/paths";
@@ -23,7 +23,7 @@ const convert = (queryClient: QueryClient) => (m: any) => {
 };
 
 export const createAppRouter = (queryClient: QueryClient) =>
-  createBrowserRouter([
+  createHashRouter([
     {
       //to fix, connect ot paths.ts
       path: "/",
