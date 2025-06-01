@@ -7,8 +7,14 @@ const Navbar = () => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   return (
-    <nav className="bg-white border-gray-1 py-2 border-b-[1px] z-10">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto py-4">
+    <nav className={`bg-white border-gray-1 ${
+          menuOpen ? "pb-0 pt-2" : "py-2"
+        } border-b-[1px] z-10`}>
+      <div
+        className={`max-w-screen-xl flex flex-wrap items-center justify-between mx-auto ${
+          menuOpen ? "pt-4" : "py-4"
+        }`}
+      >
         <Link
           to="/pokemons"
           className="flex items-center space-x-3 rtl:space-x-reverse"
@@ -47,8 +53,11 @@ const Navbar = () => {
             />
           </svg>
         </button>
-        <div className="hidden w-full md:block md:w-auto" id="navbar-default">
-          <ul className="font-bold flex flex-col p-4 md:p-0 mt-4 border md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+        <div
+          className={`${menuOpen ? "" : "hidden"} w-full md:block md:w-auto`}
+          id="navbar-default"
+        >
+          <ul className="font-bold flex flex-col p-4 md:p-0 mt-[1.5rem] border md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
             <li>
               <Link
                 className="block py-2 px-3 text-gray-9 rounded m-0"
